@@ -11,14 +11,3 @@ handleTabUrlChange = function ( tabId, changeInfo, tab ) {
 };
 
 chrome.tabs.onUpdated.addListener(handleTabUrlChange);
-
-// try to fix on first load
-waitress = function() {
-  try {
-    handleTabUrlChange();
-  }
-  catch (ex) {
-    setTimeout(function(){waitress();}, 300);
-  }
-};
-waitress();
