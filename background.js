@@ -1,6 +1,6 @@
 processTabAction = function ( tab ) {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    if (tabs[0].url == "chrome://newtab/" ) {
+    if ( tabs && tabs[0] && tabs[0].url == "chrome://newtab/" ) {
       chrome.tabs.sendMessage(tabs[0].id, "activate");
     }
   });
