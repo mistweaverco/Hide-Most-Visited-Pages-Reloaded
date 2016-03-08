@@ -11,3 +11,4 @@ handleTabUrlChange = function ( tabId, changeInfo, tab ) {
 };
 
 chrome.tabs.onUpdated.addListener(handleTabUrlChange);
+chrome.webNavigation.onDOMContentLoaded.addListener(handleTabUrlChange);

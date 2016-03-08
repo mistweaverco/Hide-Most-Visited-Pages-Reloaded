@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "Hide Most Visited Pages Reloaded",
   "author":"Marco Kellershoff",
-  "version": "1.5.4",
+  "version": "1.6.0",
   "description": "Hides the \"Most Visited\" page link section in the New Tabs window.",
   "background": { "scripts": ["background.js"] },
   "options_page": "options.html",
@@ -203,6 +203,7 @@
   }],
   "permissions" : [
     "tabs",
+    "webNavigation",
     "activeTab",
     "storage"
   ]
