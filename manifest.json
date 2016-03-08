@@ -2,6 +2,7 @@
   "update_url": "https://clients2.google.com/service/update2/crx",
   "manifest_version": 2,
   "name": "Hide Most Visited Pages Reloaded",
+  "short_name": "HMVPR",
   "author":"Marco Kellershoff",
   "version": "1.6.0",
   "description": "Hides the \"Most Visited\" page link section in the New Tabs window.",
