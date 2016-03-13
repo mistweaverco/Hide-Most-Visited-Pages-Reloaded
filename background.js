@@ -15,10 +15,21 @@ var onTabShow = function (tabId, changeInfo, tab) {
   }
 };
 
-chrome.tabs.onUpdated.addListener(onTabShow);
-
-document.addEventListener("DOMContentLoaded", function(event) { 
+var onDOMContentLoaded = function () {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     sendTabMessage(tabs[0]);
   });
+};
+
+// Remove HMVPR when creating new tab
+chrome.tabs.onUpdated.addListener(onTabShow);
+
+// Remove HMVPR when refreshing the new tab page
+chrome.webNavigation.onDOMContentLoaded.addListener(function(event) { 
+  onDOMContentLoaded();
+});
+
+// Remove HMVPR on initial startup
+document.addEventListener("DOMContentLoaded", function(event) { 
+  onDOMContentLoaded();
 });
