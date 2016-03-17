@@ -25,11 +25,11 @@ var onDOMContentLoaded = function () {
 chrome.tabs.onUpdated.addListener(onTabShow);
 
 // Remove HMVPR when refreshing the new tab page
-chrome.webNavigation.onDOMContentLoaded.addListener(function(event) { 
+chrome.webNavigation.onDOMContentLoaded.addListener(function(event) {
   onDOMContentLoaded();
 });
 
 // Remove HMVPR on initial startup
-document.addEventListener("DOMContentLoaded", function(event) { 
+document.addEventListener("DOMContentLoaded", function(event) {
   onDOMContentLoaded();
 });
