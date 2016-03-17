@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener(function(msg) {
   chrome.storage.sync.get(['cbAlsoHideLogo','cbAlsoHideSearchbar', 'cbAlsoHideNavbar'], function( obj ) {
     if ( obj.cbAlsoHideLogo && obj.cbAlsoHideLogo === true ) {
       try {
-        document.getElementById('lga').style.display = 'none';
+        document.getElementById('lga').style.visibility = 'hidden';
       } catch ( e ) {}
     }
     if ( obj.cbAlsoHideSearchbar && obj.cbAlsoHideSearchbar === true ){
