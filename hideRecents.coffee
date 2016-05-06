@@ -27,7 +27,7 @@ chrome.runtime.onMessage.addListener ( msg ) ->
   storageOptions2domElementSelectors = {
     cbAlsoHideLogo: {
       selector: '#lga'
-      modus: 'hide'
+      modus: 'invisible'
     }
     cbAlsoHideSearchbar: {
       selector: '#f'
@@ -35,6 +35,10 @@ chrome.runtime.onMessage.addListener ( msg ) ->
     }
     cbAlsoHideNavbar: {
       selector: '#mngb'
+      modus: 'remove'
+    }
+    cbAlsoHidePromo: {
+      selector: '#prm-ppt'
       modus: 'remove'
     }
   }

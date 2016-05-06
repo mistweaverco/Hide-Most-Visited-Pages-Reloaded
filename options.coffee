@@ -18,6 +18,7 @@ saveOptions = () ->
   saveAlsoHideLogo()
   saveAlsoHideSearchbar()
   saveAlsoHideNavbar()
+  saveAlsoHidePromo()
   infopop 'Settings saved!'
   return
 
@@ -26,9 +27,9 @@ setOption = ( key, value, cb ) ->
   if typeOfCallback != 'function'
     cb = () ->
       return
-  chrome.storage.sync.set {
-    key: value
-  }, cb
+  val = {}
+  val[key] = value
+  chrome.storage.sync.set val, cb
   return
 
 getOption = ( key, cb ) ->
@@ -58,14 +59,20 @@ saveAlsoHideNavbar = () ->
   setOption el.id, el.checked
   return
 
+saveAlsoHidePromo = () ->
+  el = getById 'cbAlsoHidePromo'
+  setOption el.id, el.checked
+  return
+
 chrome.storage.sync.get [
   'cbAlsoHideLogo'
   'cbAlsoHideSearchbar'
   'cbAlsoHideNavbar'
+  'cbAlsoHidePromo'
 ], ( dataObject ) ->
   for key of dataObject
     try
-      el = getById[key]
+      el = getById key
       if dataObject[key] == true
         el.checked = true
   return
