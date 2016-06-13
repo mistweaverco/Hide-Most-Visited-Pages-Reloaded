@@ -22,6 +22,8 @@ chrome.runtime.onMessage.addListener ( msg ) ->
     'cbAlsoHideLogo'
     'cbAlsoHideSearchbar'
     'cbAlsoHideNavbar'
+    'cbAlsoHidePromo'
+    'cbAlsoHideByCssSelectors'
   ]
 
   storageOptions2domElementSelectors = {
@@ -49,6 +51,10 @@ chrome.runtime.onMessage.addListener ( msg ) ->
         if dataObject[key] == true
           item = storageOptions2domElementSelectors[key]
           modEl item.selector, item.modus
+        else if dataObject[key].length > 1
+          selectors = dataObject[key].split "\n"
+          for sel in selectors
+            modEl sel, 'hide'
     return
 
   return

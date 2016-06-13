@@ -19,6 +19,7 @@ saveOptions = () ->
   saveAlsoHideSearchbar()
   saveAlsoHideNavbar()
   saveAlsoHidePromo()
+  saveAlsoHideByCssSelectors()
   infopop 'Settings saved!'
   return
 
@@ -64,17 +65,25 @@ saveAlsoHidePromo = () ->
   setOption el.id, el.checked
   return
 
+saveAlsoHideByCssSelectors = () ->
+  el = getById 'cbAlsoHideByCssSelectors'
+  setOption el.id, el.value
+  return
+
 chrome.storage.sync.get [
   'cbAlsoHideLogo'
   'cbAlsoHideSearchbar'
   'cbAlsoHideNavbar'
   'cbAlsoHidePromo'
+  'cbAlsoHideByCssSelectors'
 ], ( dataObject ) ->
   for key of dataObject
     try
       el = getById key
       if dataObject[key] == true
         el.checked = true
+      else if dataObject[key].length > 0
+        el.value = dataObject[key]
   return
 
 document.getElementById('btnSave').onclick = saveOptions
