@@ -40,7 +40,7 @@ chrome.runtime.onMessage.addListener ( msg ) ->
       modus: 'remove'
     }
     cbAlsoHidePromo: {
-      selector: '#prm-ppt'
+      selector: '#prm-pt'
       modus: 'remove'
     }
   }
