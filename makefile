@@ -16,6 +16,6 @@ icons:
 manifest:
 	cp src/manifest.json tmp
 zipup:
-	zip --junk-paths dist/dist.zip tmp/*
+	cd tmp && zip ../dist/dist.zip *
 clean:
 	find tmp -type f -not -name '.gitignore' -exec rm -rf {} \;
