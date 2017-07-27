@@ -1,24 +1,42 @@
 <html>
-  <head>
-    <title>Options for Hide Most Visited Pages Reloaded</title>
-  </head>
-  <body style="width: 550px;">
-    <h1>Options for Hide Most Visited Pages Reloaded</h1>
-    <input id="cbAlsoHideLogo" type="checkbox"> <label for="cbAlsoHideLogo">Also Hide Google Logo</label>
-    <br><br>
-    <input id="cbAlsoHideSearchbar" type="checkbox"> <label for="cbAlsoHideSearchbar">Also Hide Google Searchbar</label>
-    <br><br>
-    <input id="cbAlsoHideNavbar" type="checkbox"> <label for="cbAlsoHideNavbar">Also Hide Google Navigation Bar</label>
-    <br><br>
-    <input id="cbAlsoHidePromo" type="checkbox"> <label for="cbAlsoHidePromo">Also Hide Google Promo Message</label>
-    <br><br>
-    <label for="cbAlsoHideByCssSelectors">Also Hide these Selectors</label>
-    <br/>
-    <textarea id="cbAlsoHideByCssSelectors"></textarea>
-    <br/>
-    <div><small>Separated by new lines..</small></div>
-    <br><br>
-    <button id="btnSave">Save</button>
-    <script type="text/javascript" src="options.js"></script>
-  </body>
+        <head>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width" />
+                <title>Options for Hide Most Visited Pages Reloaded</title>
+                <link rel="stylesheet" href="options.css" />
+                <link rel="stylesheet" href="fonts/font-awesome-4.6.3/css/font-awesome.min.css" />
+        </head>
+        <body>
+                <div id="contentwrapper">
+                        <h1>Options for Hide Most Visited Pages Reloaded</h1>
+                        <input id="HideOption-logo" type="checkbox"> <label for="HideOption-logo">Also Hide Google Logo</label>
+                        <br><br>
+                        <input id="HideOption-searchbar" type="checkbox"> <label for="HideOption-searchbar">Also Hide Google Searchbar</label>
+                        <br><br>
+                        <input id="HideOption-navbar" type="checkbox"> <label for="HideOption-navbar">Also Hide Google Navigation Bar</label>
+                        <br><br>
+                        <input id="HideOption-promo" type="checkbox"> <label for="HideOption-promo">Also Hide Google Promo Message</label>
+                        <br><br>
+                        <button id="btnSave">Save</button>
+                        <h2>Advanced</h2>
+                        <p>Press <kbd>CTRL</kbd> / <kbd>⌘</kbd> + <kbd>S</kbd> to save the configuration.</p>
+                        <p>
+                                To reset the configuration back to the default values,<br/>
+                                clear the editor
+                                (<kbd>CTRL</kbd> / <kbd>⌘</kbd> + <kbd>A</kbd>, then <kbd>BACKSPACE</kbd>)
+                                and press <kbd>CTRL</kbd> / <kbd>⌘</kbd> + <kbd>S</kbd>.
+                        </p>
+                        <p>This can mess up your newtab page pretty badly, so be cautious.</p>
+                        <h3>Custom CSS</h3>
+                        <div id="cssEditor"></div>
+                        <h3>Custom JavaScript</h3>
+                        <div id="javascriptEditor"></div>
+                </div>
+                <footer>
+                       Made with <i class="fa fa-heart" aria-hidden="true" style="color:red;"></i> by
+                         <a href="https://emkae.net/" target="_blank">Marco</a>.
+                </footer>
+                <script src="ace/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+                <script type="text/javascript" src="options.js"></script>
+        </body>
 </html>

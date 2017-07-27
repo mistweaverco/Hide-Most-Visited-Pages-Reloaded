@@ -1,0 +1,78 @@
+@font-face {
+        font-family: 'Source Code Pro';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(fonts/source-code-pro/SourceCodePro-Regular.woff) format('woff');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+kbd {
+        -moz-border-radius:3px;
+        -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+        -webkit-border-radius:3px;
+        -webkit-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+        background-color:#f7f7f7;
+        border:1px solid #ccc;
+        border-radius:3px;
+        box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+        color:#333;
+        display:inline-block;
+        font-family:Arial,Helvetica,sans-serif;
+        font-size:11px;
+        line-height:1.4;
+        margin:0 .1em;
+        padding:.1em .6em;
+        text-shadow:0 1px 0 #fff;
+}
+
+html, body {
+        background-color: #272b30;
+        color: #fff;
+}
+
+body {
+        line-height: 1.8em;
+        font-size: 110%;
+}
+
+#contentwrapper {
+        width: 100%;
+        padding-bottom: 42px;
+}
+
+a:link,a:active,a:visited {
+        color: #666;
+}
+
+#javascriptEditor, #cssEditor {
+        max-width: 95%;
+        width: 900px;
+        height: 550px;
+}
+
+#messages {
+        position: fixed;
+        display: block;
+        width: 100%;
+        bottom: 0;
+        text-align: center;
+        font-size: 150%;
+        font-weight: bold;
+}
+
+#messages div {
+        display: inline-block;
+        border-radius: 15px;
+        padding: 1%;
+        margin: 1%;
+        color: #333;
+}
+
+footer {
+        color: #666;
+        position: fixed;
+        right: 1%;
+        bottom: 1%;
+        text-align: right;
+        display: block;
+}

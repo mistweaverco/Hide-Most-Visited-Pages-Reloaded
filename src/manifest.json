@@ -209,12 +209,11 @@
       "*://www.google.co.zw/_/chrome/newtab*",
       "*://www.google.cat/_/chrome/newtab*"
     ],
-    "js": ["hideRecents.js"],
+    "js": ["boot.js"],
     "run_at": "document_start"
   }],
   "permissions" : [
     "tabs",
-    "webNavigation",
     "activeTab",
     "storage"
   ]
