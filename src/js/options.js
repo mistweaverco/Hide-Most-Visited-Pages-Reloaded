@@ -29,46 +29,7 @@
                 });
         });
 
-        var getById, getOption, infopop, saveAlsoHideLogo, saveAlsoHideNavbar, saveAlsoHidePromo, saveAlsoHideSearchbar, saveOptions, setOption;
-
-        infopop = function(message) {
-                var infodiv, timer;
-                infodiv = document.createElement('div');
-                timer = null;
-                infodiv.style.width = '400px';
-                infodiv.style.backgroundColor = '#efe';
-                infodiv.style.border = '1px solid #7c7';
-                infodiv.style.padding = '10px';
-                infodiv.style.margin = '20px';
-                infodiv.style.borderRadius = '10px';
-                infodiv.style.color = '#000';
-                infodiv.innerHTML = message;
-                document.body.appendChild(infodiv);
-                timer = window.setTimeout(function() {
-                        return document.body.removeChild(infodiv);
-                }, 3500);
-        };
-
-        saveOptions = function() {
-                saveAlsoHideLogo();
-                saveAlsoHideSearchbar();
-                saveAlsoHideNavbar();
-                saveAlsoHidePromo();
-                infopop('Settings saved!');
-        };
-
-        saveAll = function() {
-                var ed;
-                // CSS Edtior
-                ed = EDITORS[0][1];
-                setOption("css", ed.getValue());
-                // JavaScript Edtior
-                ed = EDITORS[1][1];
-                setOption("javascript", ed.getValue());
-                infopop('Settings saved!');
-        };
-
-        setOption = function(key, value, cb) {
+        var setOption = function(key, value, cb) {
                 var typeOfCallback, val;
                 typeOfCallback = typeof cb;
                 if (typeOfCallback !== 'function') {
@@ -79,7 +40,7 @@
                 chrome.storage.sync.set(val, cb);
         };
 
-        getOption = function(key, cb) {
+        var getOption = function(key, cb) {
                 var typeOfKey;
                 typeOfKey = typeof key;
                 if (typeOfKey === 'string') {
@@ -90,33 +51,35 @@
                 });
         };
 
+        saveAll = function() {
+                var ed;
+                // CSS Edtior
+                ed = EDITORS[0][1];
+                setOption("css", ed.getValue());
+                // JavaScript Edtior
+                ed = EDITORS[1][1];
+                setOption("javascript", ed.getValue());
+        };
+
         getById = function(id) {
                 return document.getElementById(id);
         };
 
-        saveAlsoHideLogo = function() {
-                var el;
-                el = getById('HideOption-logo');
-                setOption("logo", el.checked);
-        };
+        getById('HideOption-logo').addEventListener('click', function(){
+                setOption("logo", this.checked);
+        });
 
-        saveAlsoHideSearchbar = function() {
-                var el;
-                el = getById('HideOption-searchbar');
-                setOption("searchbar", el.checked);
-        };
+        getById('HideOption-searchbar').addEventListener('click', function(){
+                setOption("searchbar", this.checked);
+        });
 
-        saveAlsoHideNavbar = function() {
-                var el;
-                el = getById('HideOption-navbar');
-                setOption("navbar", el.checked);
-        };
+        getById('HideOption-navbar').addEventListener("click", function(){
+                setOption("navbar", this.checked);
+        });
 
-        saveAlsoHidePromo = function() {
-                var el;
-                el = getById('HideOption-promo');
-                setOption("promo", el.checked);
-        };
+        getById('HideOption-promo').addEventListener("click", function(){
+                setOption("promo", this.checked);
+        });
 
         chrome.storage.sync.get(['logo', 'searchbar', 'navbar', 'promo'], function(dataObject) {
                 var el, key;
@@ -142,8 +105,13 @@
                         EDITORS[1][1].setValue(results.javascript, 1);
         });
 
+        var onCtrlSCallback = function(evt) {
+                if (evt.ctrlKey === true && evt.key === 's') {
+                        evt.preventDefault();
+                        saveAll();
+                        return false;
+                }
+        };
 
-
-        document.getElementById('btnSave').onclick = saveOptions;
-
+        window.addEventListener('keydown', onCtrlSCallback);
 })(window, document);
