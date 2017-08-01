@@ -1,4 +1,8 @@
 (function(window, document) {
+        var failureCounter = 0;
+        var failureRetryTimeoutInMs = 200;
+        var maxFailures = 10;
+
         var domready = function(cb) {
                 if (document.readyState === "complete")
                         return window.setTimeout(cb, 1);
@@ -28,7 +32,7 @@
                 values: ""
         });
 
-        var modEl = function(selector, modus) {
+        var modEl = function(selector, modus, callback) {
                 var ex, i, len, pNode, targetNode, targetNodes;
                 targetNodes = document.querySelectorAll(selector);
                 for (i = 0, len = targetNodes.length; i < len; i++) {
@@ -48,7 +52,12 @@
                                 }
                         } catch (error) {
                                 ex = error;
+                                if (callback)
+                                        callback(ex);
+                                return;
                         }
+                        if (callback)
+                                callback();
                 }
         };
 
@@ -80,19 +89,32 @@
 
         var alsoHideConfigKeys = Array.from(alsoHideConfig).map(function(k){return k[0];});
 
+        var onHideMostVisitedCb = function(err) {
+                var t;
+                if (!err) {
+                        chrome.storage.sync.get(alsoHideConfigKeys, forEachHideOptionCb);
+                        chrome.storage.sync.get(["javascript", "css"], function(results) {
+                                if (!results)
+                                        return;
+                                if (results.css && results.css.length)
+                                        appendCssStyle(results.css);
+                                if (results.javascript && results.javascript.length)
+                                        runCustomJavascript(results.javascript);
+                        });
+                } else {
+                        if (failureCounter < maxFailures) {
+                                t = window.setTimeout(hideMostVisited, failureRetryTimeoutInMs);
+                        }
+                        failureCounter++;
+                }
+        };
+
+        var hideMostVisited = function() {
+                modEl("#most-visited", "remove", onHideMostVisitedCb);
+        };
+
         var boot = function() {
-                modEl("#most-visited", "remove");
-                chrome.storage.sync.get(alsoHideConfigKeys, forEachHideOptionCb);
-                // load editor contents
-                chrome.storage.sync.get(["javascript", "css"], function(results) {
-                        if (!results)
-                                return;
-                        if (results.css && results.css.length)
-                                appendCssStyle(results.css);
-                        if (results.javascript && results.javascript.length)
-                                runCustomJavascript(results.javascript);
-                });
-                firstRun = true;
+                hideMostVisited();
         };
 
         chrome.runtime.onMessage.addListener(function(msg) {
