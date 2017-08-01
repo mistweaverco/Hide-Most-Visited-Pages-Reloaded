@@ -1,5 +1,5 @@
-all: js html css fonts icons manifest zipup clean
-debug: js html css fonts icons manifest debug2dist
+all: pre-build js html css fonts icons manifest zipup clean
+debug: pre-build js html css fonts icons manifest debug2dist
 debug2dist:
 	cp -r tmp/* dist/;
 js:
@@ -19,3 +19,5 @@ zipup:
 	cd tmp && zip -r ../dist/dist.zip *
 clean:
 	find tmp -type f -not -name '.gitignore' -exec rm -rf {} \;
+pre-build:
+	cd dist && rm -rf *;
