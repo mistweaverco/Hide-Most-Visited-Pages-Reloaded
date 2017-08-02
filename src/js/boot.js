@@ -117,9 +117,5 @@
                 hideMostVisited();
         };
 
-        chrome.runtime.onMessage.addListener(function(msg) {
-                if (msg !== "activate")
-                        return;
-                domready(boot);
-        });
+        domready(boot);
 })(window, document);

@@ -4,7 +4,7 @@
   "name": "Hide Most Visited Pages Reloaded",
   "short_name": "HMVPR",
   "author":"Marco Kellershoff",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "Hides the \"Most Visited\" page link section in the New Tabs window.",
   "background": { "scripts": ["background.js"] },
   "options_page": "options.html",
