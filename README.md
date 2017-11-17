@@ -1,8 +1,6 @@
 # Hide Most Visited Pages Reloaded
 This extension removes the Most Visited website links from the default New Tab page in Chrome.
 
-![](https://i.imgur.com/2Yos7w4.gif)
-
 ## History
 
 <strike>You can find it on the Google Web Store:</strike>
@@ -12,6 +10,8 @@ This extension removes the Most Visited website links from the default New Tab p
 I pulled the extension from the store (with more than 100000 active user installations at the time),
 because I received more E-Mails than Santa, but mine were full of hatred and false accusations and
 it wasn't worth the hassle anymore.
+
+![](https://apps.walialu.com/hide-most-visited-pages-reloaded/chrome-webstore-hide-most-visited-pages-reloaded-99000-users.png)
 
 I'll leave this here for legacy reasons
 
