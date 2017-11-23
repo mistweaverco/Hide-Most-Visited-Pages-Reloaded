@@ -11,13 +11,13 @@ I pulled the extension from the store (with more than 100000 active user install
 because I received more E-Mails than Santa, but mine were full of hatred and false accusations and
 it wasn't worth the hassle anymore.
 
-![](https://apps.walialu.com/hide-most-visited-pages-reloaded/chrome-webstore-hide-most-visited-pages-reloaded-99000-users.png)
+![](https://apps.walialu.com/super-evil-new-tab/chrome-webstore-hide-most-visited-pages-reloaded-99000-users.png)
 
 I'll leave this here for legacy reasons
 
 ## Current development status
 
-I'm currently using [this build](https://git.superevilmegaco.com/google-chrome/hide-most-visited-pages-reloaded) of mine with the following config:
+I'm currently using [this build](https://git.superevilmegaco.com/google-chrome/super-evil-new-tab) of mine with the following config:
 
 ```css
 html, body {
